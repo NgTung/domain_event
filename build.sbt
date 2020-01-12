@@ -13,15 +13,12 @@ libraryDependencies ++= Seq(
   "org.scalikejdbc" %% "scalikejdbc" % "2.2.9",
   "org.scalikejdbc" %% "scalikejdbc-test" % "2.2.9" % "test",
   "mysql" % "mysql-connector-java" % "5.1.24",
-  cache,
-  "com.typesafe.play" %% "play-mailer" % "3.0.1",
-  "com.typesafe.play" %% "play-json" % "2.4.0",
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.github.tototoshi" %% "play-flyway" % "1.2.0",
   "org.scalikejdbc" %% "scalikejdbc-config" % "2.2.9",
   "org.scalikejdbc" %% "scalikejdbc-play-initializer" % "2.4.2",
-  ws,
-  specs2 % Test
+  "com.google.inject" % "guice" % "4.1.0",
+  "net.codingwell" %% "scala-guice" % "4.1.0"
 )
 
 routesGenerator := InjectedRoutesGenerator

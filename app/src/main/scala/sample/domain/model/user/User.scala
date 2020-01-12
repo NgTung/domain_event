@@ -2,8 +2,13 @@ package src.main.scala.sample.domain.model.user
 
 import java.util.UUID
 
-case class UserId(uuid: UUID) {
-  override def toString = uuid.toString
-}
+import src.main.scala.sample.domain.model.Entity
 
-case class User(userId: UserId, name: String, email: String, password: String, role: String)
+case class UserId(uuid: UUID)
+
+case class User(
+  userId: UserId,
+  name: String,
+  email: String,
+  password: String
+) extends Entity

@@ -1,12 +1,12 @@
 package src.main.scala.sample.infra.broker.akka
 
 import akka.actor.{ActorRef, ActorSystem, Props}
-import src.main.scala.sample.infra.broker.{MessagePublisher, Event, EventSubscriber}
+import src.main.scala.sample.infra.broker.{Event, EventSubscriber, MessagePublisher}
 
-object AkkaEventBus extends MessagePublisher {
+class AkkaEventBus extends MessagePublisher {
   val system = ActorSystem(AkkaConfig.APP_NAME)
 
-  def registerHandler(f: Event => Unit): Boolean = {
+  private def registerHandler(f: Event => Unit): Boolean = {
     val subscriber: ActorRef = system.actorOf(Props(classOf[AkkaSubscriber], f))
 
     system.eventStream.subscribe(subscriber, classOf[Event])

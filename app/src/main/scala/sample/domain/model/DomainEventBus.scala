@@ -1,15 +1,14 @@
 package src.main.scala.sample.domain.model
 
-import src.main.scala.sample.infra.broker.{MessagePublisher, EventSubscriber, Event}
+import com.google.inject.Guice
+import src.main.scala.sample.infra.broker.{Event, EventSubscriber, MessageBroker, MessagePublisher}
+import net.codingwell.scalaguice.InjectorExtensions._
 
-private [domain] object DomainEventBus {
-  val messagePublisher = MessagePublisher.getProvider("akka")
+class DomainEventBus {
+  private val injector = Guice.createInjector(new MessageBroker())
+  private val provider = injector.instance[MessagePublisher]
 
-  def subscribe(subscriber: EventSubscriber[Event]) = {
-    messagePublisher.subscribe(subscriber)
-  }
+  def subscribe(subscriber: EventSubscriber[Event]): Unit = provider.subscribe(subscriber)
 
-  def publish(event: Event) = {
-    messagePublisher.publish(event)
-  }
+  def publish(event: Event): Unit = provider.publish(event)
 }

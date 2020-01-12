@@ -1,4 +1,4 @@
-package src.main.scala.sample.domain.model.user
+package src.main.scala.sample.domain.model.user.event
 
 import src.main.scala.sample.infra.broker.Event
 
