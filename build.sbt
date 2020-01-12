@@ -12,7 +12,7 @@ libraryDependencies ++= Seq(
   jdbc,
   "org.scalikejdbc" %% "scalikejdbc" % "2.2.9",
   "org.scalikejdbc" %% "scalikejdbc-test" % "2.2.9" % "test",
-  "mysql" % "mysql-connector-java" % "5.1.24",
+  "mysql" % "mysql-connector-java" % "5.1.45",
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.github.tototoshi" %% "play-flyway" % "1.2.0",
   "org.scalikejdbc" %% "scalikejdbc-config" % "2.2.9",
