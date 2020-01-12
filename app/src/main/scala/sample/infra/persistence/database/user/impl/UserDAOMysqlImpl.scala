@@ -12,8 +12,7 @@ class UserDAOMysqlImpl extends UserDAO {
   implicit private val session: DBSession = AutoSession
 
   def save(record: UserRecord): Boolean = {
-    Try {
-      println(s"saving user ${record.email} to DB")
+    Try(
       withSQL {
         val dbColumn = userTable.column
 
@@ -25,8 +24,10 @@ class UserDAOMysqlImpl extends UserDAO {
           dbColumn.createdAt -> DateTime.now
         )
       }.update.apply
-    } match {
-      case Success(affectedRow) if affectedRow > 0 => true
+    ) match {
+      case Success(affectedRow) if affectedRow > 0 =>
+        println(s"saved user ${record.email} to DB")
+        true
       case _ => false
     }
   }

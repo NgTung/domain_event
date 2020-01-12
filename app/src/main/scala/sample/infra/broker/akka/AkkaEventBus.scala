@@ -1,9 +1,9 @@
 package src.main.scala.sample.infra.broker.akka
 
 import akka.actor.{ActorRef, ActorSystem, Props}
-import src.main.scala.sample.infra.broker.{Event, EventSubscriber, MessagePublisher}
+import src.main.scala.sample.infra.broker.{Event, EventSubscriber, MessageBroker}
 
-class AkkaEventBus extends MessagePublisher {
+class AkkaEventBus extends MessageBroker {
   protected val system: ActorSystem = ActorSystem(AkkaConfig.APP_NAME)
 
   private def registerHandler(f: Event => Unit): Boolean = {
