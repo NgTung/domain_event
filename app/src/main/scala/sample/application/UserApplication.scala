@@ -8,7 +8,7 @@ import src.main.scala.sample.domain.model.DomainEventBus
 import src.main.scala.sample.domain.model.user.{User, UserId}
 import src.main.scala.sample.domain.model.user.event.UserRegistered
 
-class RegisterApplication {
+class UserApplication {
   val eventBus = new DomainEventBus
   val userServices = new UserService(eventBus)
   val emailService = new EmailService(eventBus)
